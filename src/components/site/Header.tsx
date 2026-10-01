@@ -1,9 +1,8 @@
 "use client";
 
 import { Link } from "@tanstack/react-router";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Menu, X, ArrowLeft, ShieldCheck } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 const navItems = [
   { to: "/", label: "الرئيسية" },
@@ -15,26 +14,9 @@ const navItems = [
 
 export function Header() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-300 ease-in-out",
-        scrolled
-          ? "border-b border-border/40 bg-background/80 backdrop-blur-md shadow-sm"
-          : "bg-transparent border-b border-transparent"
-      )}
-    >
+    <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/95 backdrop-blur-md shadow-sm">
       <div className="container-page flex h-20 items-center justify-between px-4 md:px-8">
 
         {/* أقصى اليمين: اللوغو والاسم والنص الفرعي */}
@@ -51,26 +33,26 @@ export function Header() {
               fetchpriority="high"
             />
             
-            <div className="flex flex-col border-r border-border/40 pr-3">
-              <span className="text-sm md:text-base font-bold text-foreground leading-tight">
+            <div className="flex flex-col border-r border-slate-200 pr-3">
+              <span className="text-sm md:text-base font-bold text-slate-900 leading-tight">
                 منصة حماية المستهلك
               </span>
-              <span className="text-[10px] md:text-xs text-muted-foreground font-medium mt-0.5 leading-none">
+              <span className="text-[10px] md:text-xs text-slate-500 font-medium mt-0.5 leading-none">
                 منصة مستقلة للشكاوى
               </span>
             </div>
           </Link>
         </div>
 
-        {/* المنتصف: التابات بسيطة وعصرية بدون أي حاوية */}
-        <nav aria-label="التنقل الرئيسي" className="hidden md:flex items-center gap-6 lg:gap-8">
+        {/* المنتصف: التابات واضحة وبارزة بأسود ورمادي داكن */}
+        <nav aria-label="التنقل الرئيسي" className="hidden md:flex items-center gap-2 lg:gap-3">
           {navItems.map((n) => (
             <Link
               key={n.to}
               to={n.to}
-              className="text-xs lg:text-sm font-semibold text-muted-foreground transition-colors duration-200 hover:text-foreground whitespace-nowrap"
+              className="px-3.5 py-2 rounded-lg text-xs lg:text-sm font-semibold text-slate-600 transition-all duration-200 hover:text-slate-950 hover:bg-slate-100 whitespace-nowrap"
               activeProps={{ 
-                className: "text-slate-950 font-bold dark:text-white" 
+                className: "text-slate-950 font-black bg-slate-100 shadow-inner" 
               }}
               activeOptions={{ exact: n.to === "/" }}
             >
@@ -96,7 +78,7 @@ export function Header() {
           {/* زر الموبايل */}
           <button
             type="button"
-            className="grid h-10 w-10 place-items-center rounded-xl border border-border/40 bg-background/20 text-foreground md:hidden transition-colors hover:bg-secondary"
+            className="grid h-10 w-10 place-items-center rounded-xl border border-slate-200 bg-slate-50 text-slate-900 md:hidden transition-colors hover:bg-slate-100"
             aria-label={open ? "إغلاق القائمة" : "فتح القائمة"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
@@ -109,10 +91,10 @@ export function Header() {
 
       {/* قائمة الموبايل المنسدلة */}
       <div 
-        className={cn(
-          "md:hidden overflow-hidden transition-all duration-300 ease-in-out border-b border-border/40 bg-background/95 backdrop-blur-2xl px-4", 
-          open ? "max-h-[400px] opacity-100 py-4" : "max-h-0 opacity-0 py-0"
-        )}
+        className={
+          "md:hidden overflow-hidden transition-all duration-300 ease-in-out border-b border-slate-200 bg-white px-4 " +
+          (open ? "max-h-[400px] opacity-100 py-4" : "max-h-0 opacity-0 py-0")
+        }
       >
         <div className="flex flex-col gap-1.5">
           {navItems.map((n) => (
@@ -120,15 +102,15 @@ export function Header() {
               key={n.to}
               to={n.to}
               onClick={() => setOpen(false)}
-              className="flex items-center justify-between rounded-lg px-4 py-3 text-sm font-medium text-foreground/80 transition-all hover:bg-secondary hover:text-foreground"
-              activeProps={{ className: "bg-slate-100 text-slate-950 font-bold" }}
+              className="flex items-center justify-between rounded-lg px-4 py-3 text-sm font-semibold text-slate-700 transition-all hover:bg-slate-100 hover:text-slate-950"
+              activeProps={{ className: "bg-slate-100 text-slate-950 font-black" }}
               activeOptions={{ exact: n.to === "/" }}
             >
               <span>{n.label}</span>
             </Link>
           ))}
 
-          <div className="pt-3 mt-2 border-t border-border/40">
+          <div className="pt-3 mt-2 border-t border-slate-200">
             <Link
               to="/"
               hash="complaint-form"
