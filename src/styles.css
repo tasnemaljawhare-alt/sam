@@ -29,18 +29,18 @@
 
 @theme {
   /* ==========================================================================
-     Emerald & Gold Palette (متناسقة مع ألوان برواز دبي والزمردي في الهيرو)
+     Slate & Gold Palette (نظام ألوان كحلي داكن وذهبي أنيق بدون أخضر)
      ========================================================================== */
-  --color-slate-navy: #064E3B;     /* أخضر زمردي عميق وداكن للبطاقات الكحيلة/الداكنة */
-  --color-slate-dark: #022C22;     /* زمردي داكن جداً للتباين العالي */
+  --color-slate-navy: #0F172A;     /* كحلي داكن ملكي */
+  --color-slate-dark: #020617;     /* داكن جداً خلفيات البطاقات والتدرجات */
   
-  --color-gold-amber: #D97706;     /* ذهبي/عنبري مطابِق لإطار برواز دبي والشارات */
-  --color-gold-accent: #D97706;    /* ذهبي دافئ رئيسي */
-  --color-gold-light: #F59E0B;     /* ذهبي متوهج للتأشير (Hover) */
+  --color-gold-amber: #D97706;     /* ذهبي رئيسي للشارات والأزرار */
+  --color-gold-accent: #F59E0B;    /* ذهبي مشرق للتفاعل */
+  --color-gold-light: #FBBF24;     /* ذهبي فاتح للتأشير */
 
   /* Functional / status colors */
-  --color-success: #059669;        /* زمردي حقيقي وناصع للإنهاء الموفق */
-  --color-processing: #D97706;     /* برونزي لقيد المعالجة */
+  --color-success: #2563EB;        /* أزرق رسمي موثوق للإنهاء الموفق بدلاً من الأخضر */
+  --color-processing: #D97706;     /* برونزي/ذهبي لقيد المعالجة */
   --color-urgent: #DC2626;         /* أحمر واضح للحالات العاجلة */
   --color-error: #DC2626;          /* تنبيهات الفالديشن */
 
@@ -49,17 +49,17 @@
   --color-surface: #FFFFFF;
   --color-card: #FFFFFF;
   --color-card-foreground: #0F172A;
-  --color-foreground: #0F172A;     /* نصوص رئيسية كحلية/رمادية داكنة وواضحة جداً */
+  --color-foreground: #0F172A;     /* نصوص رئيسية داكنة وواضحة */
   --color-muted: #F1F5F9;          /* خلفيات ثانوية فاتحة */
   --color-muted-foreground: #475569;/* نصوص فرعية مريحة للعين */
   --color-secondary: #F1F5F9;
   --color-secondary-foreground: #0F172A;
 
-  /* Primary & Accent tokens (تطابق أزرار وشارات الهيرو) */
-  --color-primary: #059669;        /* الأخضر الزمردي الرئيسي (Emerald 600) */
+  /* Primary & Accent tokens (الأسود/الكحلي للرئيسي، والذهبي للتمييز) */
+  --color-primary: #0F172A;        /* أسود/كحلي رسمي رئيسي */
   --color-primary-foreground: #FFFFFF;
 
-  --color-accent: #059669;         /* لون التفاعل الرئيسي */
+  --color-accent: #D97706;         /* التمييز بالذهبي */
   --color-accent-foreground: #FFFFFF;
   --color-highlight: #F59E0B;
   --color-border: #E2E8F0;         /* حدود ناعمة ودقيقة */
@@ -70,10 +70,10 @@
 
   --radius: 1rem;                  /* انحناءات عصرية ناعمة */
 
-  /* ظلال زمردية وذهبية تتطابق مع كروت الهيرو */
-  --shadow-soft: 0 10px 30px -10px rgba(5, 150, 105, 0.08);
+  /* ظلال ناعمة وذهبية متناسقة */
+  --shadow-soft: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
   --shadow-card: 0 20px 40px -15px rgba(15, 23, 42, 0.08);
-  --shadow-glow: 0 15px 35px -10px rgba(217, 119, 6, 0.25);
+  --shadow-glow: 0 15px 35px -10px rgba(217, 119, 6, 0.20);
 }
 
 @layer base {
@@ -106,7 +106,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-gold-accent);
+    outline: 2px solid var(--color-gold-amber);
     outline-offset: 2px;
     border-radius: 0.5rem;
   }
@@ -135,7 +135,7 @@
 }
 
 @layer utilities {
-  /* زجاج فاخر ناصع ومشرق مطابق لكروت الهيرو */
+  /* زجاج فاخر ناصع ومشرق */
   .glass {
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(16px);
@@ -143,21 +143,21 @@
     border: 1px solid rgba(255, 255, 255, 0.6);
   }
 
-  /* تدرج زمردي-ذهبي فاخر للعناوين متناغم مع برواز دبي */
+  /* تدرج كحلي-ذهبي فاخر للعناوين */
   .text-gradient {
-    background: linear-gradient(135deg, #0F172A 10%, #059669 60%, #D97706 100%);
+    background: linear-gradient(135deg, #0F172A 30%, #D97706 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
 
-  /* خلفية بوهج زمردي وذهبي دافئ */
+  /* خلفية بوهج ذهبي دافئ خفيف */
   .mesh-bg {
     background-color: var(--color-background);
     background-image:
-      radial-gradient(at 0% 0%, rgba(217, 119, 6, 0.08) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, rgba(5, 150, 105, 0.06) 0px, transparent 50%),
-      radial-gradient(at 50% 50%, rgba(245, 158, 11, 0.05) 0px, transparent 60%);
+      radial-gradient(at 0% 0%, rgba(217, 119, 6, 0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(15, 23, 42, 0.04) 0px, transparent 50%),
+      radial-gradient(at 50% 50%, rgba(245, 158, 11, 0.03) 0px, transparent 60%);
   }
 
   .no-scrollbar::-webkit-scrollbar {
@@ -166,9 +166,9 @@
 
   /* حالات الشكاوى المتناسقة مع الألوان الجديدة */
   .status-success {
-    background-color: rgba(5, 150, 105, 0.1);
+    background-color: rgba(37, 99, 235, 0.1);
     color: var(--color-success);
-    border: 1px solid rgba(5, 150, 105, 0.25);
+    border: 1px solid rgba(37, 99, 235, 0.25);
   }
   .status-processing {
     background-color: rgba(217, 119, 6, 0.1);

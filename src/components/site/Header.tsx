@@ -56,7 +56,7 @@ export function Header() {
                 منصة حماية المستهلك
               </span>
               <span className="text-[10px] md:text-xs text-muted-foreground font-medium mt-0.5 leading-none">
-             منصة مستقلة للشكاوى
+                منصة مستقلة للشكاوى
               </span>
             </div>
           </Link>
@@ -70,7 +70,7 @@ export function Header() {
               to={n.to}
               className="text-xs lg:text-sm font-semibold text-muted-foreground transition-colors duration-200 hover:text-foreground whitespace-nowrap"
               activeProps={{ 
-                className: "text-primary font-bold" 
+                className: "text-slate-950 font-bold dark:text-white" 
               }}
               activeOptions={{ exact: n.to === "/" }}
             >
@@ -85,9 +85,9 @@ export function Header() {
             <Link
               to="/"
               hash="complaint-form"
-              className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-primary px-5 py-2.5 text-xs lg:text-sm font-bold text-primary-foreground shadow-sm transition-all duration-300 hover:bg-primary/90 hover:shadow-md active:scale-95"
+              className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-slate-950 px-5 py-2.5 text-xs lg:text-sm font-bold text-white shadow-sm transition-all duration-300 hover:bg-slate-800 hover:shadow-md active:scale-95"
             >
-              <ShieldCheck className="h-4 w-4 shrink-0" aria-hidden="true" />
+              <ShieldCheck className="h-4 w-4 shrink-0 text-amber-400" aria-hidden="true" />
               <span>تقديم شكوى</span>
               <ArrowLeft className="h-3.5 w-3.5 shrink-0 transition-transform duration-200 group-hover:-translate-x-1" aria-hidden="true" />
             </Link>
@@ -121,7 +121,7 @@ export function Header() {
               to={n.to}
               onClick={() => setOpen(false)}
               className="flex items-center justify-between rounded-lg px-4 py-3 text-sm font-medium text-foreground/80 transition-all hover:bg-secondary hover:text-foreground"
-              activeProps={{ className: "bg-primary/10 text-primary font-bold" }}
+              activeProps={{ className: "bg-slate-100 text-slate-950 font-bold" }}
               activeOptions={{ exact: n.to === "/" }}
             >
               <span>{n.label}</span>
@@ -133,9 +133,9 @@ export function Header() {
               to="/"
               hash="complaint-form"
               onClick={() => setOpen(false)}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-bold text-primary-foreground shadow-sm"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-slate-950 px-5 py-3 text-sm font-bold text-white shadow-sm hover:bg-slate-800"
             >
-              <ShieldCheck className="h-4 w-4" />
+              <ShieldCheck className="h-4 w-4 text-amber-400" />
               <span>تقديم شكوى الآن</span>
               <ArrowLeft className="h-4 w-4" />
             </Link>
